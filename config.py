@@ -1,16 +1,24 @@
+import sys
 import os
 from pathlib import Path
 
-# Base directory of the project
-BASE_DIR = Path(__file__).resolve().parent
+def get_base_path():
+    """
+    Determine the correct path for resources whether running
+    as a script or as a compiled PyInstaller executable.
+    """
+    if getattr(sys, 'frozen', False):
+        # If running as a compiled exe, look in the temporary sys._MEIPASS folder
+        return Path(sys._MEIPASS)
+    else:
+        # If running as a script, look in the file's current directory
+        return Path(__file__).resolve().parent
 
-# Directory where language JSON files are stored
+# Set BASE_DIR using the logic above
+BASE_DIR = get_base_path()
 LANG_DIR = BASE_DIR / "languages"
 
-# Default configuration settings
 DEFAULT_LANG = "es"
-ENCODING = "utf-8"
 
 def get_language_file_path(lang_code: str) -> Path:
-    """Returns the full path for a specific language code."""
     return LANG_DIR / f"{lang_code}.json"
