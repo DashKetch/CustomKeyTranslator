@@ -22,3 +22,10 @@ DEFAULT_LANG = "es"
 
 def get_language_file_path(lang_code: str) -> Path:
     return LANG_DIR / f"{lang_code}.json"
+
+def list_available_languages() -> list:
+    """Returns a list of available language codes based on JSON files in LANG_DIR."""
+    if not LANG_DIR.exists():
+        return []
+    # Returns the filenames without the '.json' extension
+    return [f.stem for f in LANG_DIR.glob("*.json")]
