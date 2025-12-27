@@ -30,9 +30,9 @@ def ensure_languages_setup():
             # A more complete dictionary to test randomization and context
             example_data = {
                 "language": "es",
-                "hello": ["hola", "buenos días", "buena mañana", "buenas tardes"],
+                "hello": "hola",
                 "hi": ["hombre", "chulo", "tío"],
-                "goodbye": ["adiós", "hasta luego", "hasta siempre", "chau", "despedida"],
+                "goodbye": "hasta luego",
                 "see you later": ["te veré pronto", "mejoré", "te vemos más tarde"],
                 "see you soon": ["te veré en poco tiempo", "estoy cerca de ti"],
                 "hello how are you": ["¿cómo estás?", "¿qué tal?", "¿cómo vas?"],
