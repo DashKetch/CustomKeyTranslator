@@ -1,0 +1,35 @@
+# --- Python ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual Environments
+venv/
+env/
+.venv/
+.env
+
+# --- PyCharm / JetBrains ---
+# Project-specific settings that shouldn't be shared
+.idea/
+
+# --- Operating System ---
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# --- Project Specific ---
+# Ignore any logs if you decide to add file logging later
+*.log
+
+# --- Test Langs ---
+./languages/code.json
