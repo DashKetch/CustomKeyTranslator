@@ -4,28 +4,54 @@ from pathlib import Path
 
 def get_base_path():
     """
-    Determine the correct path for resources whether running
-    as a script or as a compiled PyInstaller executable.
+    Determines the directory where the executable or script is located.
     """
     if getattr(sys, 'frozen', False):
-        # If running as a compiled exe, look in the temporary sys._MEIPASS folder
-        return Path(sys._MEIPASS)
-    else:
-        # If running as a script, look in the file's current directory
-        return Path(__file__).resolve().parent
+        # Path to the folder where the .exe lives
+        return Path(sys.executable).parent
+    return Path(__file__).resolve().parent
 
-# Set BASE_DIR using the logic above
 BASE_DIR = get_base_path()
 LANG_DIR = BASE_DIR / "languages"
 
-DEFAULT_LANG = "es"
+
+def ensure_languages_setup():
+    """
+    Creates the languages folder and a high-quality starter template if missing.
+    """
+    if not LANG_DIR.exists():
+        LANG_DIR.mkdir(parents=True, exist_ok=True)
+
+        example_file = LANG_DIR / "es.json"
+        if not example_file.exists():
+            import json
+            # A more complete dictionary to test randomization and context
+            example_data = {
+                "language": "es",
+                "hello": ["hola", "buenos días", "saludos"],
+                "bye": ["adiós", "nos vemos", "hasta luego"],
+                "friend": ["amigo", "colega", "compañero"],
+                "world": "mundo",
+                "thanks": ["gracias", "muchas gracias"],
+                "yes": "sí",
+                "no": "no",
+                "computer": "computadora",
+                "software": "programación",
+                "engineer": ["ingeniero", "desarrollador"],
+                "pizza": "pizza"
+            }
+            with open(example_file, 'w', encoding='utf-8') as f:
+                json.dump(example_data, f, indent=2, ensure_ascii=False)
+        return True
+    return False
+
+def list_available_languages():
+    if not LANG_DIR.exists():
+        return []
+    return [f.stem for f in LANG_DIR.glob("*.json")]
 
 def get_language_file_path(lang_code: str) -> Path:
     return LANG_DIR / f"{lang_code}.json"
 
-def list_available_languages() -> list:
-    """Returns a list of available language codes based on JSON files in LANG_DIR."""
-    if not LANG_DIR.exists():
-        return []
-    # Returns the filenames without the '.json' extension
-    return [f.stem for f in LANG_DIR.glob("*.json")]
+
+DEFAULT_LANG = "es"
