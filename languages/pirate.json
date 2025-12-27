@@ -1,0 +1,9 @@
+{
+  "language": "pirate",
+  "hello": ["ahoy", "yo-ho-ho"],
+  "bye": "fair winds",
+  "friend": ["matey", "scallywag"],
+  "world": "seven seas",
+  "money": "doubloons",
+  "yes": "aye"
+}

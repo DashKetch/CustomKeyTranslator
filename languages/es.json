@@ -1,0 +1,9 @@
+{
+  "language": "es",
+  "hello": ["hola", "buenos días"],
+  "bye": "adiós",
+  "friend": "amigo",
+  "world": "mundo",
+  "thank you": "gracias",
+  "computer": "computadora"
+}
