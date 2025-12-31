@@ -29,7 +29,7 @@ python main.py --lang es --text "Hello world"
 python main.py --lang pirate --text "Hello friend, do you have money?"
 ```
 ### Adding New Languages
-1. Create a new .json file in the languages/ directory (e.g., fr.json).
+1. Create a new .json file in the languages/directory (e.g., fr.json).
 
 2. Follow this structure:
 
