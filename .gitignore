@@ -31,6 +31,3 @@ ehthumbs.db
 # --- Project Specific ---
 # Ignore any logs if you decide to add file logging later
 *.log
-
-# --- Test Langs ---
-./languages/code.json
