@@ -1,4 +1,4 @@
-example_data = {
+{
     "language": "es",
     "hello": "hola",
     "hi": ["hola", "buenas", "qué tal"],
